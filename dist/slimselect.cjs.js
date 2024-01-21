@@ -415,10 +415,14 @@ class Render {
                     }
                     return false;
                 case 'Escape':
+                    if (this.settings.isOpen) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
                     this.callbacks.close();
                     return false;
             }
-            return false;
+            return true;
         };
         main.onclick = (e) => {
             if (this.settings.disabled) {

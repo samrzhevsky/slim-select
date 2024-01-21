@@ -261,11 +261,17 @@ export default class Render {
           }
           return false
         case 'Escape':
+          if (this.settings.isOpen) {
+            e.preventDefault()
+            e.stopPropagation()
+          }
           this.callbacks.close()
           return false
       }
 
-      return false
+      // in original was "false"
+      // but I need standard keyboard shortcuts
+      return true
     }
 
     // Add onclick for main div
